@@ -1,3 +1,4 @@
+const test;
 const Client = require("ssh2").Client;
 const connSettings = {
   host: "218.233.209.73",
@@ -29,6 +30,7 @@ function upload() {
     });
 
     // initiate transfer of file
+    // readStream => writeStream
     readStream.pipe(writeStream);
   });
 }
