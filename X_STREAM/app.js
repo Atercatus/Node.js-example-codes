@@ -8,16 +8,16 @@ const PORT = 5432;
 function streamVideo(req, res) {
   const path = "assets/sample2.mp4";
   const stat = fs.statSync(path);
-  console.log(stat);
   const fileSize = stat.size;
   const range = req.headers.range;
-  console.log(req.headers);
   console.log(range);
 
   if (range) {
     const parts = range.replace(/bytes=/, "").split("-");
     const start = parseInt(parts[0], 10);
-    const end = parts[1] ? parseInt(parts[1], 10) : fileSize - 1;
+    const end = parts[1] ? parseInt(parts[1], 10) : start + 1019200;
+    console.log("start:", start);
+    console.log("end:", end);
     const chunksize = end - start + 1;
     const file = fs.createReadStream(path, { start, end });
     const head = {

@@ -1,1 +1,3 @@
-console.log("TEST");
+const video = document.getElementById("jsVideo");
+
+function requestVideo() {}
